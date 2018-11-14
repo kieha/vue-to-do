@@ -1,28 +1,44 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class='ui three column centered grid'>
+      <div class='column'>
+        <TodoList v-bind:todos="todos" />
+        <CreateTodo v-on:create-todo="addTodo"/>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CreateTodo from './components/CreateTodo';
+import TodoList from './components/TodoList';
 
 export default {
-  name: 'app',
   components: {
-    HelloWorld
-  }
-}
+    TodoList,
+    CreateTodo,
+  },
+  data() {
+    return {
+      todos: [
+        {
+          done: false,
+          project: 'Personal',
+          title: 'Learn Vue',
+        },
+        {
+          done: false,
+          project: 'AT Labs',
+          title: 'Admin Dashboard',
+        },
+      ],
+    };
+  },
+  methods: {
+    addTodo(newTodo) {
+      this.todos.push(newTodo);
+    },
+  },
+  name: 'app',
+};
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
