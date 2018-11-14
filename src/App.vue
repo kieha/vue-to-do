@@ -1,23 +1,8 @@
-<template>
-  <div id="app">
-    <div class='ui three column centered grid'>
-      <div class='column'>
-        <TodoList v-bind:todos="todos" />
-        <CreateTodo v-on:create-todo="addTodo"/>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script>
 import CreateTodo from './components/CreateTodo';
 import TodoList from './components/TodoList';
 
 export default {
-  components: {
-    TodoList,
-    CreateTodo,
-  },
   data() {
     return {
       todos: [
@@ -34,11 +19,18 @@ export default {
       ],
     };
   },
-  methods: {
-    addTodo(newTodo) {
-      this.todos.push(newTodo);
-    },
+  name: 'App',
+  render() {
+    return (
+      <div id='app'>
+        <div class='ui three column centered grid'>
+          <div class='column'>
+            <TodoList todos={this.todos} />
+            <CreateTodo onCreateTodo={(newTodo) => this.todos.push(newTodo)} />
+          </div>
+        </div>
+      </div>
+    );
   },
-  name: 'app',
 };
 </script>
