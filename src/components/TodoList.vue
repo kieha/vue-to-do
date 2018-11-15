@@ -1,5 +1,7 @@
 <script>
+
 import Todo from './Todo';
+
 export default {
   methods: {
     deleteTodo(todo) {
@@ -31,4 +33,5 @@ export default {
     );
   },
 };
+
 </script>

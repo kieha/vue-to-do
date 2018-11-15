@@ -1,4 +1,5 @@
 <script>
+
 export default {
 	data() {
 		return {
@@ -63,4 +64,5 @@ export default {
     );
   },
 };
+
 </script>
