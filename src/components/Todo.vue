@@ -1,5 +1,7 @@
 <script>
 
+import { mapActions } from 'vuex';
+
 export default {
   data() {
     return {
@@ -7,20 +9,20 @@ export default {
     };
   },
   methods: {
-    deleteTodo(todo) {
-      this.$emit('deleteTodo', todo);
-    },
+    ...mapActions([
+      'deleteTodo',
+      'editTodo',
+      'toggleTodo',
+    ]),
     handleInputChange(e) {
       this.todo[e.target.name] = e.target.value;
+      this.editTodo(this.todo);
     },
     hideForm() {
       this.isEditing = false;
     },
     showForm() {
       this.isEditing = true;
-    },
-    toggleCompleteTodo(todo) {
-      this.$emit('toggleCompleteTodo', todo);
     },
   },
   name: 'Todo',
@@ -61,7 +63,7 @@ export default {
         }
         <div
           class={`ui bottom attached basic button ${this.todo.done ? 'green' : 'red'}`}
-          onClick={() => this.toggleCompleteTodo(this.todo)}
+          onClick={() => this.toggleTodo(this.todo)}
         >
           {this.todo.done ? 'Completed' : 'Pending'}
         </div>

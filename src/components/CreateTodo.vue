@@ -14,11 +14,7 @@ export default {
     },
     createTodo() {
       if (this.title.length > 0 && this.project.length > 0) {
-        this.$emit('createTodo', {
-          title: this.title,
-          project: this.project,
-          done: false,
-        });
+        this.$store.dispatch('createTodo', { title: this.title, project: this.project});
         this.title = '';
         this.project = '';
         this.isCreating = false;
