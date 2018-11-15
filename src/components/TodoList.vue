@@ -10,7 +10,6 @@ export default {
       const todoIndex = this.todos.indexOf(todo);
       const isComplete = this.todos[todoIndex].done;
       this.todos[todoIndex].done = !isComplete;
-
     },
   },
   name: 'TodoList',
