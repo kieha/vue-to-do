@@ -1,13 +1,13 @@
 <script>
 
 export default {
-	data() {
-		return {
+  data() {
+    return {
       isCreating: false,
       title: '',
       project: '',
     };
-	},
+  },
   methods: {
     closeForm() {
       this.isCreating = false;
@@ -27,7 +27,7 @@ export default {
       this.isCreating = true;
     },
   },
-	name: 'CreateTodo',
+  name: 'CreateTodo',
   render() {
     return (
       <div class="ui basic content center aligned segment">
